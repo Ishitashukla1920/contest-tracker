@@ -37,6 +37,7 @@ Contest Tracker is a web application that helps users track competitive programm
 ## Live working- 
 [![Watch the Demo](https://img.youtube.com/vi/abc123XYZ/0.jpg)](https://raw.githubusercontent.com/Ishitashukla1920/contest-tracker/main/Vite%20%2B%20React%20-%20Google%20Chrome%202025-03-19%2019-09-33.mp4)
 
+[![Watch the Demo](https://via.placeholder.com/600x400?text=Watch+the+Demo)](https://drive.google.com/uc?export=download&id=1gh3ItBkkQYopN7oji7qKzRxbE5jasVxR)
 
 
 ## Contribution

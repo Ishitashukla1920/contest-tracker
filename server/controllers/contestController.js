@@ -1,7 +1,6 @@
 const Contest = require('../models/contest');
 const { fetchYoutubeLinks } = require('../services/youtubeService');
 
-// Get all contests with filters
 const getContests = async (req, res) => {
   try {
     const { platform, status, limit = 100 } = req.query;
@@ -9,7 +8,6 @@ const getContests = async (req, res) => {
     const query = {};
     
     if (platform) {
-      // Handle multiple platforms
       const platforms = platform.split(',');
       query.platform = { $in: platforms };
     }
@@ -29,7 +27,6 @@ const getContests = async (req, res) => {
   }
 };
 
-// Get a single contest by ID
 const getContestById = async (req, res) => {
   try {
     const contest = await Contest.findById(req.params.id);
@@ -45,7 +42,6 @@ const getContestById = async (req, res) => {
   }
 };
 
-// Update contest solution link
 const updateContestSolution = async (req, res) => {
   try {
     const { solutionLink } = req.body;
@@ -70,7 +66,6 @@ const updateContestSolution = async (req, res) => {
   }
 };
 
-// Try to fetch YouTube solutions automatically
 const fetchSolutions = async (req, res) => {
   try {
     const result = await fetchYoutubeLinks();

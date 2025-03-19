@@ -1,13 +1,11 @@
 const axios = require('axios');
 
 /**
- * Fetches videos from a YouTube playlist page by scraping the embedded JSON data (ytInitialData).
- * @param {string} playlistUrl - The full URL of the YouTube playlist.
- * @returns {Promise<Array>} - Resolves to an array of video objects { title, url }.
+ * @param {string} playlistUrl 
+ * @returns {Promise<Array>} 
  */
 const fetchPlaylistVideos = async (playlistUrl) => {
   try {
-    // Request the playlist page with headers to mimic a browser.
     const response = await axios.get(playlistUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
@@ -19,7 +17,6 @@ const fetchPlaylistVideos = async (playlistUrl) => {
     });
     const html = response.data;
     
-    // Extract the ytInitialData JSON object from the page HTML.
     const initialDataMatch = html.match(/var ytInitialData = (.*?);<\/script>/);
     if (!initialDataMatch || !initialDataMatch[1]) {
       throw new Error('Failed to extract ytInitialData from page');
@@ -32,8 +29,6 @@ const fetchPlaylistVideos = async (playlistUrl) => {
       throw new Error('Failed to parse ytInitialData JSON: ' + jsonErr.message);
     }
     
-    // Navigate through the JSON structure to locate playlist items.
-    // **WARNING:** The structure below is subject to change.
     let items = [];
     try {
       items = initialData.contents.twoColumnBrowseResultsRenderer.tabs[0]
@@ -46,7 +41,6 @@ const fetchPlaylistVideos = async (playlistUrl) => {
     
     if (!items || !items.length) return [];
     
-    // Map each item to a simpler video object.
     const videos = items.map(item => {
       if (!item.playlistVideoRenderer) return null;
       const renderer = item.playlistVideoRenderer;
@@ -66,9 +60,7 @@ const fetchPlaylistVideos = async (playlistUrl) => {
 };
 
 /**
- * Fetches YouTube video links from Codeforces and CodeChef playlists.
- * Environment variables should provide the full playlist URLs.
- * @returns {Promise<Object>} - An object mapping platform names to arrays of video objects.
+ * @returns {Promise<Object>} - 
  */
 const fetchYoutubeLinks = async () => {
   try {

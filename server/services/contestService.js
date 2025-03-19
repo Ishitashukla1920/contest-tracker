@@ -2,7 +2,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const Contest = require('../models/contest');
 
-// Fetch contests from Codeforces
 const fetchCodeforcesContests = async () => {
   try {
     const response = await axios.get('https://codeforces.com/api/contest.list');
@@ -25,7 +24,6 @@ const fetchCodeforcesContests = async () => {
   }
 };
 
-// Fetch contests from CodeChef
 const fetchCodechefContests = async () => {
   try {
     const response = await axios.get('https://www.codechef.com/contests');
@@ -66,7 +64,6 @@ const fetchCodechefContests = async () => {
 
 
 
-// Fetch all contests from Codeforces, CodeChef, and LeetCode and update the database
 const fetchAllContests = async () => {
   try {
     const [codeforces, codechef] = await Promise.all([

@@ -9,24 +9,19 @@ require('dotenv').config();
 
 const app = express();
 
-// Connect to MongoDB
 connectDB();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use('/api/contests', contestRoutes);
 app.use('/api/users', userRoutes);
 
-// Schedule contest fetching (every 6 hours)
 cron.schedule('0 */6 * * *', async () => {
   console.log('Running scheduled task to fetch contests');
   await fetchAllContests();
 });
 
-// Schedule contest status update (every hour)
 cron.schedule('0 * * * *', async () => {
   console.log('Running scheduled task to update contest status');
   await updateContestStatus();
@@ -38,5 +33,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// Initial contest fetch
 fetchAllContests();

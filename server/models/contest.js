@@ -8,7 +8,7 @@ const contestSchema = new mongoose.Schema({
   platform: {
     type: String,
     required: true,
-    enum: ['codeforces', 'codechef'], // removed 'leetcode'
+    enum: ['codeforces', 'codechef'], 
   },
   link: {
     type: String,
@@ -23,7 +23,7 @@ const contestSchema = new mongoose.Schema({
     required: true,
   },
   duration: {
-    type: Number, // in minutes
+    type: Number, 
     required: true,
   },
   status: {
@@ -37,7 +37,6 @@ const contestSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-// Create indexes for faster queries
 contestSchema.index({ platform: 1, startTime: 1 });
 contestSchema.index({ status: 1 });
 

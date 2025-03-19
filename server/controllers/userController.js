@@ -1,13 +1,11 @@
 const User = require('../models/user');
 
-// Get user profile
 const getUserProfile = async (req, res) => {
   try {
     const { email } = req.params;
     
     let user = await User.findOne({ email }).populate('bookmarkedContests');
     
-    // Create user if not exists
     if (!user) {
       user = await User.create({
         email,
@@ -23,7 +21,6 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-// Update user preferences
 const updateUserPreferences = async (req, res) => {
   try {
     const { email } = req.params;
@@ -55,7 +52,6 @@ const updateUserPreferences = async (req, res) => {
   }
 };
 
-// Toggle bookmark for a contest
 const toggleBookmark = async (req, res) => {
   try {
     const { email } = req.params;
@@ -70,10 +66,8 @@ const toggleBookmark = async (req, res) => {
     const bookmarkIndex = user.bookmarkedContests.indexOf(contestId);
     
     if (bookmarkIndex === -1) {
-      // Add bookmark
       user.bookmarkedContests.push(contestId);
     } else {
-      // Remove bookmark
       user.bookmarkedContests.splice(bookmarkIndex, 1);
     }
     

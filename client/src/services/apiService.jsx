@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
-// Contest API Service
 const ContestAPI = {
   getContests: async (filters = {}) => {
     try {
@@ -45,7 +44,6 @@ const ContestAPI = {
   }
 };
 
-// User API Service
 const UserAPI = {
   getUserProfile: async (email) => {
     try {

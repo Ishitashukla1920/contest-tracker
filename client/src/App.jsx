@@ -12,7 +12,6 @@ function App() {
   const [email, setEmail] = useState('');
   
   useEffect(() => {
-    // In a real app, this would be from auth
     const userEmail = localStorage.getItem('userEmail') || '';
     setEmail(userEmail || 'guest@example.com');
   }, []);

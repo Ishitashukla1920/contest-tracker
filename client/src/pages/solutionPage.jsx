@@ -13,14 +13,13 @@ const SolutionsPage = () => {
         setLoading(true);
         const response = await ContestAPI.fetchSolutions();
         
-        // Extracting Codeforces solutions from API response
         const formattedSolutions = response.codeforces.map((item, index) => ({
-          id: index, // Unique key
+          id: index, 
           solutionLink: item.url,
-          contestName: `Codeforces Contest #${index + 1}`, // Placeholder name
-          description: 'Watch the solution for this Codeforces contest.', // Placeholder description
-          thumbnailUrl: `https://img.youtube.com/vi/${extractVideoId(item.url)}/0.jpg`, // Generate YouTube thumbnail
-          date: null, // Date is unavailable in the given API response
+          contestName: `Codeforces Contest #${index + 1}`, 
+          description: 'Watch the solution for this Codeforces contest.', 
+          thumbnailUrl: `https://img.youtube.com/vi/${extractVideoId(item.url)}/0.jpg`, 
+          date: null, 
         }));
 
         setSolutions(formattedSolutions);
@@ -35,7 +34,6 @@ const SolutionsPage = () => {
     fetchSolutions();
   }, []);
 
-  // Function to extract YouTube Video ID from URL
   const extractVideoId = (url) => {
     const match = url.match(/(?:youtube\.com\/(?:[^/]+\/[^/]+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
     return match ? match[1] : null;
@@ -44,7 +42,6 @@ const SolutionsPage = () => {
   const renderVideoCard = (solution) => (
     <div key={solution.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
       <div className="relative">
-        {/* Video thumbnail */}
         <div className="bg-gray-200 dark:bg-gray-700 h-48 flex items-center justify-center">
           {solution.thumbnailUrl ? (
             <img 

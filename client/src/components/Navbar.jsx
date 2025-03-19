@@ -22,7 +22,7 @@ const Navbar = ({ onSetEmail }) => {
     { name: 'Contests', path: '/' },
     { name: 'My Bookmarks', path: '/bookmarks' },
     { name: 'Add Solutions', path: '/solutions' },
-    { name: 'Solutions', path: '/solutions-page' }, // Added new Solutions tab
+    { name: 'Solutions', path: '/solutions-page' }, 
   ];
 
   return (

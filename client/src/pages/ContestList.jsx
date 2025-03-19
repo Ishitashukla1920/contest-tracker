@@ -12,7 +12,6 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Extract user preferences or initial filters
     const newPlatforms = initialFilters?.platforms ||
       (user?.preferences?.platforms 
         ? Object.keys(user.preferences.platforms).filter((p) => user.preferences.platforms[p]) 
@@ -52,7 +51,6 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
 
   const handleBookmarkToggle = async (contestId) => {
     if (!user) {
-      // Handle not logged in case - could redirect to login or show a message
       alert('Please log in to bookmark contests');
       return;
     }
@@ -60,14 +58,12 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
     await toggleBookmark(contestId);
   };
 
-  // Combine loading states
   const isLoading = loading || userLoading;
 
   return (
     <div className="container mx-auto p-4 bg-gray-900 text-gray-100">
       <h3 className="text-2xl font-semibold text-center mb-6 text-gray-100">Contests</h3>
       
-      {/* Time Status Filters */}
       <div className="flex justify-center mb-6">
         <div className="inline-flex rounded-md shadow-sm" role="group">
           <button
@@ -84,7 +80,7 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
           <button
             type="button"
             className={`px-4 py-2 text-sm font-medium ${
-              selectedStatus === 'ongoing' // Changed from 'present' to match API
+              selectedStatus === 'ongoing' 
                 ? 'bg-blue-600 text-white' 
                 : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
             }`}
@@ -106,28 +102,24 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
         </div>
       </div>
 
-      {/* Loading State */}
       {isLoading && (
         <div className="flex justify-center items-center py-12">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
         </div>
       )}
 
-      {/* Error State */}
       {error && !isLoading && (
         <div className="text-center py-8">
           <p className="text-red-400">{error}</p>
         </div>
       )}
 
-      {/* No Contests State */}
       {!isLoading && !error && contests.length === 0 && (
         <div className="flex flex-col items-center justify-center py-12">
           <p className="text-center text-gray-400 text-lg">No {selectedStatus} contests available</p>
         </div>
       )}
 
-      {/* Contests Grid */}
       {!isLoading && !error && contests.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {contests.map((contest) => {

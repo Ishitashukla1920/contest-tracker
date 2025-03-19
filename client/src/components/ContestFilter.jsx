@@ -7,7 +7,6 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
   const [selectedStatus, setSelectedStatus] = useState('upcoming');
 
   useEffect(() => {
-    // Initialize with user preferences if available
     if (user?.preferences?.platforms) {
       const platforms = Object.keys(user.preferences.platforms).filter(
         platform => user.preferences.platforms[platform]
@@ -15,7 +14,6 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
       setSelectedPlatforms(platforms);
     }
     
-    // Initialize with initialFilters if provided
     if (initialFilters) {
       if (initialFilters.platforms) {
         setSelectedPlatforms(initialFilters.platforms);
@@ -59,7 +57,6 @@ const ContestFilter = ({ onFilterChange, initialFilters }) => {
     { id: 'completed', name: 'Completed' },
   ];
 
-  // Save user preferences when platforms change
   useEffect(() => {
     if (user) {
       const platformPreferences = {};

@@ -34,13 +34,9 @@ Contest Tracker is a web application that helps users track competitive programm
    ```sh
    npm start
    ```
-## Live working-
-<video width="600" controls>
-  <source src="https://raw.githubusercontent.com/Ishitashukla1920/contest-tracker/main/Vite%20%2B%20React%20-%20Google%20Chrome%202025-03-19%2019-09-33.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-if this was not opening try this- 
-[![Watch the Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://raw.githubusercontent.com/Ishitashukla1920/contest-tracker/main/Vite%20%2B%20React%20-%20Google%20Chrome%202025-03-19%2019-09-33.mp4)
+## Live working- 
+[![Watch the Demo](https://img.youtube.com/vi/abc123XYZ/0.jpg)](https://raw.githubusercontent.com/Ishitashukla1920/contest-tracker/main/Vite%20%2B%20React%20-%20Google%20Chrome%202025-03-19%2019-09-33.mp4)
+
 
 
 ## Contribution
